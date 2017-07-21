@@ -14,9 +14,53 @@ const int NUM_OF_WORDS = 1;
 const int NUM_OF_PROCESSES = 8;
 
 // Function Declarations
+void readInDoubleCSV(std::string fileName, std::vector<double> &data);
+void printVector(const std::vector<double> &source);
+void parallelCode();
 
 
 int main( int argc, char** argv)
+{
+	// Read in Data
+	std::string inputFile = "sinData.csv";
+	std::vector<double> timeDomainData;
+	readInDoubleCSV(inputFile, timeDomainData);
+	//printVector(timeDomainData);
+
+
+	return 0;	
+}
+
+
+void readInDoubleCSV(std::string fileName, std::vector<double> &data)
+{
+	std::ifstream file (fileName);
+	std::string temp;
+	if ( file.is_open() )
+	{
+		while ( getline(file, temp, ',') )
+		{
+			data.push_back( std::atof(temp.c_str()) );	
+		}
+		file.close();
+	}
+	else
+	{
+		perror("Error: File did not open");
+	}
+}
+
+
+void printVector(const std::vector<double> &source)
+{
+	for (int i = 0; i < source.size(); i++)
+	{
+		std::cout << "Element [" << i+1 << "]: " << source[i] << std::endl;
+	}	
+}
+
+
+void parallelCode()
 {
 	//Variables
 	size_t len = NUM_OF_WORDS * sizeof(std::string);
@@ -102,5 +146,15 @@ int main( int argc, char** argv)
 	sem_close(lock);
 
 	exit(1);
-	return 0;
+
 }
+
+
+
+
+
+
+
+
+
+

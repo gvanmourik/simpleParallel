@@ -1,4 +1,4 @@
-NAME = simpleParallel
+NAME = fftParallel
 
 CC := g++
 

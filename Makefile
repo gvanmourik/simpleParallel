@@ -6,7 +6,7 @@ INCLUDES :=
 CXXFLAGS := 
 CPPFLAGS :=
 CFLAGS :=
-LDFLAGS := -Wall
+LDFLAGS :=
 LIBS :=
 
 TARGET = bin/$(NAME)

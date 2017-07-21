@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+echo running...
+cd bin/
+./simpleParallel
